@@ -38,5 +38,65 @@ def plotting_time_feat(df, features, start, stop, scaler=False):
         ax.set_title(f'From {start} to {stop}', fontsize=16)
 
 
+        
+def rem_col(df, col):
+    '''
+    Removes columns from a dataframe that contain a string.
+    '''
+    return df.loc[:,~df.columns.str.contains(col)]
 
 
+def rem_cols(df, cols):
+    '''
+    Removes multiple columns from a dataframe that contain a string in a given list.
+    '''
+    for colname in cols:
+        df = df.loc[:,~df.columns.str.contains(colname)]
+    return df
+
+  
+def std_scaler(df):
+    '''
+    Sklearn StandardScaler applied to a pandas dataframe for the use with method chaining.
+    '''
+    colnames = df.columns.to_list()
+    scaler = StandardScaler()
+    df = scaler.fit_transform(df)
+    df = pd.DataFrame(df)
+    df.columns = colnames
+    return df
+
+  
+# def custom_join_xy(dfx, dfy):
+    # df = (
+        # dfx.join(dfy, rsuffix='_drop')
+        # .pipe(rem_col, '_drop')
+        # .pipe(pd.DataFrame.drop, ['city',
+                                  # 'year',
+                                  # 'weekofyear'
+                                 # ], axis=1)
+    # )
+    # return df
+
+    
+# def log_cases(df):
+    # df = df.assign(logged_cases = lambda df: np.log(df['total_cases']+1))
+    # return df
+
+    
+def train_test_timesplit(df, ratio=0.75):
+    '''
+    Performs a train test split for time series on a dataframe with a datetime index.
+
+    Parameter:
+    ratio determines the fraction of the training part relative to the original dataframe.
+    Output:
+    Two dataframes, the first being the training one.
+    '''
+    time_index = list(df.index)
+    df = df.reset_index()
+    df_train = df.loc[:int(len(time_index)*ratio),:]
+    df_train.index = time_index[:int(len(time_index)*ratio)+1]
+    df_test = df.loc[int(len(time_index)*ratio)+1:,:]
+    df_test.index = time_index[int(len(time_index)*ratio)+1:]
+    return df_train, df_test
