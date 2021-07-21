@@ -38,6 +38,7 @@ def plotting_time_feat(df, features, start, stop, scaler=False):
         ax.set_title(f'From {start} to {stop}', fontsize=16)
 
 
+        
 def rem_col(df, col):
     '''
     Removes columns from a dataframe that contain a string.
@@ -53,6 +54,7 @@ def rem_cols(df, cols):
         df = df.loc[:,~df.columns.str.contains(colname)]
     return df
 
+  
 def std_scaler(df):
     '''
     Sklearn StandardScaler applied to a pandas dataframe for the use with method chaining.
@@ -64,6 +66,7 @@ def std_scaler(df):
     df.columns = colnames
     return df
 
+  
 # def custom_join_xy(dfx, dfy):
     # df = (
         # dfx.join(dfy, rsuffix='_drop')
@@ -75,10 +78,12 @@ def std_scaler(df):
     # )
     # return df
 
+    
 # def log_cases(df):
     # df = df.assign(logged_cases = lambda df: np.log(df['total_cases']+1))
     # return df
 
+    
 def train_test_timesplit(df, ratio=0.75):
     '''
     Performs a train test split for time series on a dataframe with a datetime index.
