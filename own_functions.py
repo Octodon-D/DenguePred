@@ -1,3 +1,9 @@
+import numpy as np
+from sklearn.metrics import mean_squared_error, explained_variance_score, mean_absolute_error
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
 def plotting_time_feat(df, features, start, stop, scaler=False):
     """
     Function subsets input dataframe to features and further to a certain time period and plots selected features.
@@ -13,8 +19,6 @@ def plotting_time_feat(df, features, start, stop, scaler=False):
     scaler: bool, (default False) if True StandardScaler of sklearn will be applied to features.
     
     """
-    import pandas as pd
-    import matplotlib.pyplot as plt
     
     df1 = df[features]
     df2 = df1[start:stop]
@@ -96,9 +100,8 @@ def custom_dropper(df, cols):
     '''
     return df[df.index.isin(df[cols].dropna().index)]
 
-
 def model_classification(actual, predicted): 
-    from sklearn.metrics import mean_squared_error, explained_variance_score, mean_absolute_error
+
     """
     Prints out RSME, MAE and explained variance score
     """
@@ -111,6 +114,5 @@ def model_classification(actual, predicted):
 
     
 def log_cases(df):
-    import numpy as np
     df = df.assign(logged_cases = lambda df: np.log(df['total_cases']+1))
     return df
