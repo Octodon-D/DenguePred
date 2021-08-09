@@ -73,7 +73,6 @@ def std_scaler(df):
 def train_test_timesplit(df, ratio=0.75):
     '''
     Performs a train test split for time series on a dataframe with a datetime index.
-
     Parameter:
     ratio determines the fraction of the training part relative to the original dataframe.
     Output:
