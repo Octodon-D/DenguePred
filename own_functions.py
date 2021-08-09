@@ -100,3 +100,16 @@ def train_test_timesplit(df, ratio=0.75):
     df_test = df.loc[int(len(time_index)*ratio)+1:,:]
     df_test.index = time_index[int(len(time_index)*ratio)+1:]
     return df_train, df_test
+
+
+def custom_dropper(df, cols):
+    '''
+    Drops rows of a data frame that have missing values in some of the columns.
+    ------------------
+    In: 
+    df: a data frame
+    cols: columns in which to look for missing values
+    ------------------
+    Out: a data frame
+    '''
+    return df[df.index.isin(df[cols].dropna().index)]
