@@ -1,3 +1,5 @@
+
+
 def plotting_time_feat(df, features, start, stop, scaler=False):
     """
     Function subsets input dataframe to features and further to a certain time period and plots selected features.
@@ -99,6 +101,7 @@ def custom_dropper(df, cols):
 
 def model_classification(actual, predicted): 
     from sklearn.metrics import mean_squared_error, explained_variance_score, mean_absolute_error
+    import numpy as np
     """
     Prints out RSME, MAE and explained variance score
     """
