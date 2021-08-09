@@ -37,7 +37,6 @@ def plotting_time_feat(df, features, start, stop, scaler=False):
     else:
         ax.set_title(f'From {start} to {stop}', fontsize=16)
 
-
         
 def rem_col(df, col):
     '''
@@ -65,23 +64,6 @@ def std_scaler(df):
     df = pd.DataFrame(df)
     df.columns = colnames
     return df
-
-  
-# def custom_join_xy(dfx, dfy):
-    # df = (
-        # dfx.join(dfy, rsuffix='_drop')
-        # .pipe(rem_col, '_drop')
-        # .pipe(pd.DataFrame.drop, ['city',
-                                  # 'year',
-                                  # 'weekofyear'
-                                 # ], axis=1)
-    # )
-    # return df
-
-    
-# def log_cases(df):
-    # df = df.assign(logged_cases = lambda df: np.log(df['total_cases']+1))
-    # return df
 
     
 def train_test_timesplit(df, ratio=0.75):
@@ -113,3 +95,22 @@ def custom_dropper(df, cols):
     Out: a data frame
     '''
     return df[df.index.isin(df[cols].dropna().index)]
+
+
+def model_classification(actual, predicted): 
+    from sklearn.metrics import mean_squared_error, explained_variance_score, mean_absolute_error
+    """
+    Prints out RSME, MAE and explained variance score
+    """
+    print('-'*20)
+    print(f'RMSE: {round(np.sqrt(mean_squared_error(actual, predicted)),2)}')
+    print('-'*20)
+    print(f'MAE: {round(mean_absolute_error(actual, predicted),2)}')
+    print(f'Explained variance: {round(explained_variance_score(actual, predicted),3)}')
+    print('-'*20)
+
+    
+def log_cases(df):
+    import numpy as np
+    df = df.assign(logged_cases = lambda df: np.log(df['total_cases']+1))
+    return df
