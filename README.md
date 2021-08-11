@@ -9,20 +9,61 @@ The aim of this project was to predict the number of dengue fever cases reported
 
 ## Overview
 This repository consists of different notebooks: 
-1. [01_data_cleaning](01_data_cleaning.ipynb): 
+[01_data_cleaning.ipynb](01_data_cleaning.ipynb): 
 * Data import
 * Missing value imputation
 * Feature editing 
 * Adding population data
 * Train test split
-2. [02_feature_engineering](02_feature_engineering.ipynb): 
+
+[02_feature_engineering.ipynb] (02_feature_engineering.ipynb): 
 * Features based on temperature functions
 * Cumulative precipitation variables
 * Adding lagged values
-3. Needs to be added...
+
+[03_eda.ipynb](03_eda.ipynb):
+* Exploratory data analysis
+* Visualisations of the different variables
+
+[03_visualization_cases_america.ipynb](03_visualization_cases_america.ipynb):
+* Visualisation of Dengue case numbers over time
+* For North and South America
+* From 1980 until 2020
+* Using Geopandas
+* Creating an animated GIF image
+
+[custom_regression_model.ipynb](custom_regression_model.ipynb):
+* Poisson Regression using Gradient Boosting
+* Regression using environmental variables, a model for seasonality and a variable for the predicted deviance from the seasonal model
+* Can predict some of the epidemics
+* Larger error rate than regression models that only use environmental variables
+
+[04_granger_causality.ipynb](04_granger_causality.ipynb):
+* Algorithm that searches for statistically significant relationships between variables
+* Retrieves environmental variables that are highly likely to have a causal relationship with the target variable
+
+[04_holt_winters.ipynb](04_holt_winters.ipynb):
+* Holt-Winters Exponential Smoothing
+* Prediction of the seasonal fluctuations in reported Dengue case numers
+
+[04_neuralprophet.ipynb](04_neuralprophet.ipynb):
+* Time series forecasting model using `neural prophet`
+* Using additional regressors (environmental variables)
+
+[04_regression_models.ipynb](04_regression_models.ipynb):
+* Random Forest Regression 
+* Poisson Regression (Gradient Boosting)
+* Using `sklearn`
+* Achieving the lowest MAE error rates of our submissions
+
+[04_sarimax.ipynb](04_sarimax.ipynb):
+* Seasonal autoregressive model
+* Using additional regressors (environmental variables)
+* Using `statsmodels`
+
 
 ## Environment
-Use the [requirements](requirements.txt) file in this repo to create a new environment. For this you can either use `make setup` or the following commands:
+If you work with pip you can use the [requirements](requirements.txt) file in this repo to obtain all necessary packages. And if you have pyenv and pip installed, you can create a virtual environment with the following commands:
 
 ```BASH
 pyenv local 3.8.5
