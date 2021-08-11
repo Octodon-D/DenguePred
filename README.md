@@ -9,6 +9,7 @@ The aim of this project was to predict the number of dengue fever cases reported
 
 ## Overview
 This repository consists of different notebooks: 
+
 [01_data_cleaning.ipynb](01_data_cleaning.ipynb): 
 * Data import
 * Missing value imputation
@@ -16,7 +17,7 @@ This repository consists of different notebooks:
 * Adding population data
 * Train test split
 
-[02_feature_engineering.ipynb] (02_feature_engineering.ipynb): 
+[02_feature_engineering.ipynb](02_feature_engineering.ipynb): 
 * Features based on temperature functions
 * Cumulative precipitation variables
 * Adding lagged values
