@@ -27,9 +27,7 @@ This repository consists of different notebooks:
 * Visualisations of the different variables
 
 [03_visualization_cases_america.ipynb](03_visualization_cases_america.ipynb):
-* Visualisation of Dengue case numbers over time
-* For North and South America
-* From 1980 until 2020
+* Visualisation of Dengue incidence rates from 1980 until 2020 for North and South America
 * Using Geopandas
 * Creating an animated GIF image
 
